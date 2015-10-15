@@ -41,4 +41,4 @@ class Server():
             stdin, stdout, stderr = ssh.exec_command("cat /etc/issue")
             return stdout.readlines()[0].split(" ")[0]
         except:
-            logging.error("Unable to identify the host %s distribution", host)
+            logging.error("Unable to identify the distribution of host %s", host)

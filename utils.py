@@ -30,7 +30,8 @@ class Server():
         try:
             ssh = paramiko.SSHClient()
             ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
-            ssh.connect(host, username=username, password=password, **kwargs)
+            ssh.connect(host, username=username, password=password,
+                        **self.ssh_args)
             return ssh
         except Exception as e:
             logging.error(e)

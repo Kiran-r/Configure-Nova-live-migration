@@ -10,8 +10,9 @@
 #    License for the specific language governing permissions and limitations
 #    under the License.
 
-import yaml
+import logging
 import traceback
+import yaml
 
 
 class Parser():
@@ -32,8 +33,7 @@ class Parser():
             with open(path, 'r') as stream:
                 return yaml.load(stream)
         except IOError:
-            print "Please provide correct file path."
-            print "*"*50
+            logging.error("Please provide correct file path.")
             traceback.print_exc()
 
     def _set_properties(self):

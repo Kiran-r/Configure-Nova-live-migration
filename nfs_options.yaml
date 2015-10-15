@@ -1,0 +1,14 @@
+NFS_configuration:
+  nfs-server:
+    host: "10.101.1.40"
+    username: "root"
+    password: "noir0123"
+  compute-nodes:
+    hosts: "10.101.1.41,10.101.1.42"
+    username: "root"
+    password: "noir0123"
+  args:
+    network: "10.101.1.0/24"
+    nfs_share: "/opt/nfs"
+    nfs_mount: "/mnt/nfs"
+    automount: False

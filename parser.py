@@ -23,7 +23,7 @@ class Parser():
         self.nfs_clients = None
         self.args = None
 
-    def parse_yaml(self, path):
+    def _parse_yaml(self, path):
         """
         Parse yaml file and return a dictionary.
         """
@@ -35,11 +35,11 @@ class Parser():
             print "*"*50
             traceback.print_exc()
 
-    def set_properties(self):
+    def _set_properties(self):
         """
         Set properties based on the values listed in config file.
         """
-        parsed_yaml = self.parse_yaml('nfs_options.yaml')['NFS_configuration']
+        parsed_yaml = self._parse_yaml('nfs_options.yaml')['NFS_configuration']
         self.nfs_server = parsed_yaml['nfs-server']
         self.nfs_clients = parsed_yaml['nfs-clients']
         self.args = parsed_yaml['args']

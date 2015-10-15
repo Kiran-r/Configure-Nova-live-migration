@@ -3,7 +3,7 @@ NFS_configuration:
     host: "10.101.1.40"
     username: "root"
     password: "noir0123"
-  client-nodes:
+  nfs-clients:
     hosts: "10.101.1.41,10.101.1.42"
     username: "root"
     password: "noir0123"

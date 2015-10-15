@@ -21,10 +21,3 @@ class YamlParser():
         self.nfs_server = parsed_yaml['nfs-server']
         self.nfs_clients = parsed_yaml['nfs-clients']
         self.args = parsed_yaml['args']
-
-
-obj = YamlParser()
-obj.set_properties()
-print obj.nfs_server
-print obj.nfs_clients
-print obj.args

@@ -11,6 +11,9 @@
 #    under the License.
 
 import logging
+
+from i18n import _
+
 import paramiko
 
 
@@ -19,9 +22,11 @@ class NfsAuto():
     def __init__(self):
         self.hosts = {}
 
+
 class Server():
 
     def __init__(self, host, username, password, **kwargs):
+        self.host = host
         self.username = username
         self.password = password
         self.ssh_args = kwargs
@@ -30,8 +35,8 @@ class Server():
         try:
             ssh = paramiko.SSHClient()
             ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
-            ssh.connect(host, username=username, password=password,
-                        **self.ssh_args)
+            ssh.connect(self.host, username=self.username,
+                        password=self.password, **self.ssh_args)
             return ssh
         except Exception as e:
             logging.error(e)
@@ -40,5 +45,8 @@ class Server():
         try:
             stdin, stdout, stderr = ssh.exec_command("cat /etc/issue")
             return stdout.readlines()[0].split(" ")[0]
-        except:
-            logging.error("Unable to identify the distribution of host %s", host)
+        except Exception as e:
+            msg = (_("Unable to identify the distribution of host %s")
+                   % self.host)
+            logging.error(msg)
+            logging.error(e)
